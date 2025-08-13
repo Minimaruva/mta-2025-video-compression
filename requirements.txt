@@ -1,2 +1,4 @@
 bjontegaard
 numpy
+scikit-image
+ffmpeg
