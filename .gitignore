@@ -4,3 +4,4 @@ dataset
 .DS_Store
 /img
 /originals
+.venv

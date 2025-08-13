@@ -1,2 +1,3 @@
 bjontegaard
 numpy
+scikit-image
