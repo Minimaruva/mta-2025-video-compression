@@ -93,11 +93,13 @@ def folder_submission(folder, return_dict):
         bitrate, psnr = bench_submission(folder, qp, is_anchor=True)
         bitrates_anchor.append(bitrate)
         psnrs_anchor.append(psnr)
-    
-        bitrate, psnr = bench_submission(folder, qp, is_anchor=True)
+
+        bitrate, psnr = bench_submission(folder, qp, is_anchor=False)  # <-- FIXED To false here
         bitrates_test.append(bitrate)
         psnrs_test.append(psnr)
     try:
         return_dict[folder] = bd.bd_rate(bitrates_anchor, psnrs_anchor, bitrates_test, psnrs_test, method='akima')
-    except:
-        return_dict[folder] = 0
+    ## Changed this part of original code
+    except Exception as e:
+        print(f"Error in BD-rate calculation for {folder}: {e}")
+        return_dict[folder] = -77777
